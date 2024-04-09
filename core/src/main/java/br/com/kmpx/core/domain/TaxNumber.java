@@ -1,5 +1,8 @@
 package br.com.kmpx.core.domain;
 
+import br.com.kmpx.core.exception.TaxNumberException;
+import br.com.kmpx.core.exception.enums.ErrorCodeEnum;
+
 public class TaxNumber {
     private String value;
 
@@ -13,6 +16,7 @@ public class TaxNumber {
     public void setValue(String value) throws Exception {
         if (!isValid(value)) throw new TaxNumberException(ErrorCodeEnum.ON0001.getMessage(), ErrorCodeEnum.ON0001.getCode());
         this.value = value;
+
     }
 
     public String getValue(){

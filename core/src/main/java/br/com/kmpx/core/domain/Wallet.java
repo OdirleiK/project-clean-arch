@@ -1,7 +1,8 @@
 package br.com.kmpx.core.domain;
 
 import br.com.kmpx.core.domain.enums.UserTypeEnum;
-import jdk.jfr.Experimental;
+import br.com.kmpx.core.exception.TransferException;
+import br.com.kmpx.core.exception.enums.ErrorCodeEnum;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
@@ -48,10 +49,10 @@ public class Wallet {
 
     public void transfer(BigDecimal value) throws Exception {
         if(this.user.getType() == UserTypeEnum.SHOPKEEPER)
-            throw new Exception();
+            throw new TransferException(ErrorCodeEnum.TR0001.getMessage(), ErrorCodeEnum.TR0001.getCode());
 
         if(this.balance.compareTo(value) < 0)
-            throw new Exception();
+            throw new TransferException(ErrorCodeEnum.TR0002.getMessage(), ErrorCodeEnum.TR0002.getCode());
 
         this.balance.subtract(value);
     }
