@@ -5,7 +5,7 @@ public enum ErrorCodeEnum {
     ON0001("Tax Number inválido", "ON-0001"),
     ON0002("Tax Number indisponivel", "ON-0002"),
     ON0003("Email indisponivel", "ON-0003"),
-
+    ON0004("Houve um erro na criação do usúario", "ON-0004"),
 
     TR0001("Usuário lojista não tem a função transferência disponível", "TR-0001"),
     TR0002("Saldo indisponível", "TR-0002"),

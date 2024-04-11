@@ -1,8 +1,10 @@
 package br.com.kmpx.application.gateway;
 
+import br.com.kmpx.core.domain.TransactionPin;
 import br.com.kmpx.core.domain.User;
+import br.com.kmpx.core.domain.Wallet;
 
 public interface CreateUserGateway {
 
-    User create(User user);
+    Boolean create(User user, Wallet wallet, TransactionPin transactionPin);
 }
