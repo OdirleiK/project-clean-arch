@@ -1,7 +1,7 @@
-package br.com.kmpx.usecase;
+package br.com.kmpx.application.gateway;
 
 import br.com.kmpx.core.domain.TransactionPin;
 
-public interface CreateTransacationPinUseCase {
+public interface CreateTransactionPinGateway {
     void create(TransactionPin transactionPin);
 }
