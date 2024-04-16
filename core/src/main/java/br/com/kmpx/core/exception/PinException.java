@@ -1,10 +1,10 @@
 package br.com.kmpx.core.exception;
 
-public class NotFoundException extends Exception{
+public class PinException extends Exception{
 
     private String code;
 
-    public NotFoundException(String message, String code) {
+    public PinException(String message, String code) {
         super(message);
         this.code = code;
     }

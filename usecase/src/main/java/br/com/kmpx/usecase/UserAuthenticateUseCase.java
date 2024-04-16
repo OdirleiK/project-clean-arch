@@ -1,7 +1,8 @@
 package br.com.kmpx.usecase;
 
-public interface UserAuthenticateUseCase {
+import br.com.kmpx.core.exception.AuthenticateException;
 
-    Boolean authenticate(String username, String password);
+public interface UserAuthenticateUseCase {
+    Boolean authenticate(String username, String password) throws AuthenticateException;
 
 }

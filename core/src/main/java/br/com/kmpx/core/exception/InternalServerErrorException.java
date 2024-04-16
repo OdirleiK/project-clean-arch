@@ -1,7 +1,6 @@
 package br.com.kmpx.core.exception;
 
 public class InternalServerErrorException extends Exception{
-
     private String code;
 
     public InternalServerErrorException(String message, String code) {
