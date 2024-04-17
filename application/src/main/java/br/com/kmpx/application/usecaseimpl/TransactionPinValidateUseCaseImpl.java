@@ -6,9 +6,8 @@ import br.com.kmpx.usecase.TransactionPinValidateUseCase;
 
 public class TransactionPinValidateUseCaseImp implements TransactionPinValidateUseCase {
 
-
     @Override
-    public Boolean validate(TransactionPin transactionPin) throws TransferException {
+    public Boolean validate(TransactionPin transactionPin) {
         return null;
     }
 }
