@@ -10,6 +10,7 @@ import br.com.kmpx.infrastructure.repository.TransactionPinEntityRepository;
 import br.com.kmpx.infrastructure.repository.UserEntityRepository;
 import br.com.kmpx.infrastructure.repository.WalletEntityRepository;
 import org.springframework.stereotype.Service;
+import static br.com.kmpx.infrastructure.utils.Utilities.log;
 
 @Service
 public class CreateUserGatewayImpl implements CreateUserGateway {
@@ -33,11 +34,14 @@ public class CreateUserGatewayImpl implements CreateUserGateway {
     @Override
     public Boolean create(User user, Wallet wallet) {
         try{
+            log.info("Start of user creation::CreateUserGatewayImpl");
             var userSaved = userEntityRepository.save(userMapper.toUserEntity(user));
             var transactionPinSaved = transactionPinEntityRepository.save(transactionPinMapper.toTransactionPinEntity(wallet.getTransactionPin()));
             walletEntityRepository.save(walletMapper.toWalletEntity(wallet, userSaved, transactionPinSaved));
+            log.info("User created with success::CreateUserGatewayImpl");
             return true;
         }catch (Exception e){
+            log.info("Error in creation of user::CreateUserGatewayImpl");
             return false;
         }
     }
