@@ -1,4 +1,4 @@
-package br.com.kmpx;
+package br.com.kmpx.infrastructure;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

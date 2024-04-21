@@ -11,31 +11,28 @@ public class User {
     private String email;
     private String password;
     private TaxNumber taxNumber;
-    private String fullname;
+    private String fullName;
     private UserTypeEnum type;
-    private TransactionPin transactionPin;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
+    private LocalDateTime updateAt;
 
-    public User(UUID id, String email, String password, TaxNumber taxNumber, String fullname, UserTypeEnum type, TransactionPin transactionPin, LocalDateTime createdAt, LocalDateTime updatedAt) {
+    public User(UUID id, String email, String password, TaxNumber taxNumber, String fullName, UserTypeEnum type, LocalDateTime createdAt, LocalDateTime updateAt) {
         this.id = id;
         this.email = email;
         this.password = password;
         this.taxNumber = taxNumber;
-        this.fullname = fullname;
+        this.fullName = fullName;
         this.type = type;
-        this.transactionPin = transactionPin;
         this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
+        this.updateAt = updateAt;
     }
 
-    public User(String email, String password, TaxNumber taxNumber, String fullname, UserTypeEnum type, TransactionPin transactionPin) {
+    public User(String email, String password, TaxNumber taxNumber, String fullName, UserTypeEnum type) {
         this.email = email;
         this.password = password;
         this.taxNumber = taxNumber;
-        this.fullname = fullname;
+        this.fullName = fullName;
         this.type = type;
-        this.transactionPin = transactionPin;
     }
 
     public User() {}
@@ -72,12 +69,12 @@ public class User {
         this.taxNumber = taxNumber;
     }
 
-    public String getFullname() {
-        return fullname;
+    public String getFullName() {
+        return fullName;
     }
 
-    public void setFullname(String fullname) {
-        this.fullname = fullname;
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
     }
 
     public UserTypeEnum getType() {
@@ -88,24 +85,16 @@ public class User {
         this.type = type;
     }
 
-    public TransactionPin getTransactionPin() {
-        return transactionPin;
-    }
-
-    public void setTransactionPin(TransactionPin transactionPin) {
-        this.transactionPin = transactionPin;
-    }
-
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
 
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
+    public LocalDateTime getUpdateAt() {
+        return updateAt;
     }
 
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
+    public void setUpdateAt(LocalDateTime updateAt) {
+        this.updateAt = updateAt;
     }
 
     @Override
@@ -113,11 +102,11 @@ public class User {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         User user = (User) o;
-        return id.equals(user.id) && email.equals(user.email) && password.equals(user.password) && taxNumber.equals(user.taxNumber) && fullname.equals(user.fullname) && type == user.type && transactionPin.equals(user.transactionPin) && Objects.equals(createdAt, user.createdAt) && Objects.equals(updatedAt, user.updatedAt);
+        return Objects.equals(id, user.id) && Objects.equals(email, user.email) && Objects.equals(password, user.password) && Objects.equals(taxNumber, user.taxNumber) && Objects.equals(fullName, user.fullName) && type == user.type && Objects.equals(createdAt, user.createdAt) && Objects.equals(updateAt, user.updateAt);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, email, password, taxNumber, fullname, type, transactionPin, createdAt, updatedAt);
+        return Objects.hash(id, email, password, taxNumber, fullName, type, createdAt, updateAt);
     }
 }

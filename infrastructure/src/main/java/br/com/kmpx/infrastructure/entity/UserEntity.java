@@ -1,4 +1,4 @@
-package br.com.kmpx.entity;
+package br.com.kmpx.infrastructure.entity;
 
 import br.com.kmpx.core.domain.enums.UserTypeEnum;
 import jakarta.persistence.*;
@@ -40,7 +40,7 @@ public class UserEntity {
     @Column(name = "CreatedAt ", nullable = false)
     private LocalDateTime createdAt ;
 
-    @Column(name = "UpdatedAt ", nullable = false)
+    @Column(name = "UpdatedAt ")
     private LocalDateTime updatedAt ;
 
 }

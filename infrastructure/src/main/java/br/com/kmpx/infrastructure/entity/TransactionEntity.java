@@ -1,4 +1,4 @@
-package br.com.kmpx.entity;
+package br.com.kmpx.infrastructure.entity;
 
 import br.com.kmpx.core.domain.enums.TransactionStatusEnum;
 import jakarta.persistence.*;
@@ -39,6 +39,6 @@ public class TransactionEntity {
     @Column(name = "CreatedAt", nullable = false)
     private LocalDateTime createdAt ;
 
-    @Column(name = "UpdatedAt", nullable = false)
+    @Column(name = "UpdatedAt")
     private LocalDateTime updatedAt ;
 }

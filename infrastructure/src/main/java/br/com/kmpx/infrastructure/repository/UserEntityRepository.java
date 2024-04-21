@@ -1,7 +1,6 @@
-package br.com.kmpx.repository;
+package br.com.kmpx.infrastructure.repository;
 
-import br.com.kmpx.entity.TransactionPinEntity;
-import br.com.kmpx.entity.UserEntity;
+import br.com.kmpx.infrastructure.entity.UserEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.UUID;
