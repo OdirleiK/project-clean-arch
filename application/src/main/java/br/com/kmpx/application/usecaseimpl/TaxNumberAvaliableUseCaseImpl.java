@@ -13,6 +13,6 @@ public class TaxNumberAvaliableUseCaseImpl implements TaxNumberAvaliableUseCase 
 
     @Override
     public Boolean taxNumberAvaliable(String taxNumber) {
-        return null;
+        return taxNumberAvaliableGateway.taxNumberAvaliable(taxNumber);
     }
 }

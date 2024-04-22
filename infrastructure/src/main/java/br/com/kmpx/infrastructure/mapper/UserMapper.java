@@ -1,6 +1,8 @@
 package br.com.kmpx.infrastructure.mapper;
 
+import br.com.kmpx.core.domain.TaxNumber;
 import br.com.kmpx.core.domain.User;
+import br.com.kmpx.infrastructure.dto.request.CreateUserRequest;
 import br.com.kmpx.infrastructure.entity.UserEntity;
 import org.springframework.stereotype.Component;
 
@@ -17,6 +19,16 @@ public class UserMapper {
                 user.getType(),
                 user.getCreatedAt(),
                 user.getUpdateAt()
+        );
+    }
+
+    public User toUser(CreateUserRequest request) throws Exception {
+        return new User(
+                request.email(),
+                request.password(),
+                new TaxNumber(request.taxNumber()),
+                request.fullName(),
+                request.type()
         );
     }
 }

@@ -2,8 +2,11 @@ package br.com.kmpx.infrastructure.service;
 
 import br.com.kmpx.application.gateway.TaxNumberAvaliableGateway;
 import br.com.kmpx.infrastructure.repository.UserEntityRepository;
+import org.springframework.stereotype.Service;
+
 import static br.com.kmpx.infrastructure.utils.Utilities.log;
 
+@Service
 public class TaxNumberAvaliableGatewayImpl implements TaxNumberAvaliableGateway {
 
     private UserEntityRepository userEntityRepository;

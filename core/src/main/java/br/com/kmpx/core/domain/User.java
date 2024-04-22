@@ -28,11 +28,13 @@ public class User {
     }
 
     public User(String email, String password, TaxNumber taxNumber, String fullName, UserTypeEnum type) {
+        this.id = UUID.randomUUID();
         this.email = email;
         this.password = password;
         this.taxNumber = taxNumber;
         this.fullName = fullName;
         this.type = type;
+        this.createdAt = LocalDateTime.now();
     }
 
     public User() {}
