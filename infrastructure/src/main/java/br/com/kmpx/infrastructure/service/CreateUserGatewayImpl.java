@@ -9,6 +9,7 @@ import br.com.kmpx.infrastructure.mapper.WalletMapper;
 import br.com.kmpx.infrastructure.repository.TransactionPinEntityRepository;
 import br.com.kmpx.infrastructure.repository.UserEntityRepository;
 import br.com.kmpx.infrastructure.repository.WalletEntityRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 import static br.com.kmpx.infrastructure.utils.Utilities.log;
 
@@ -32,6 +33,7 @@ public class CreateUserGatewayImpl implements CreateUserGateway {
     }
 
     @Override
+    @Transactional
     public Boolean create(User user, Wallet wallet) {
         try{
             log.info("Start of user creation::CreateUserGatewayImpl");
