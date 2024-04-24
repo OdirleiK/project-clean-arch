@@ -11,7 +11,7 @@ public class FindWalletByTaxNumberUseCaseImpl implements FindWalletByTaxNumberUs
     private FindWalletByTaxNumberGateway findWalletByTaxNumberGateway;
 
     @Override
-    public Wallet findByTaxNumber(String taxNumber) throws NotFoundException {
+    public Wallet findByTaxNumber(String taxNumber) throws Exception {
         Wallet wallet = findWalletByTaxNumberGateway.findByTaxNumber(taxNumber);
         if(wallet == null)
             throw new NotFoundException(ErrorCodeEnum.WA0001.getMessage(), ErrorCodeEnum.WA0001.getCode());
