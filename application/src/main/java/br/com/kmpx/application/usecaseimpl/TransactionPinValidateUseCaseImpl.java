@@ -12,8 +12,9 @@ public class TransactionPinValidateUseCaseImpl implements TransactionPinValidate
     private TransactionPinValidateGateway transactionPinValidateGateway;
     private UpdateTransactionPinUseCase updateTransactionPinUseCase;
 
-    public TransactionPinValidateUseCaseImpl(TransactionPinValidateGateway transactionPinValidateGateway) {
+    public TransactionPinValidateUseCaseImpl(TransactionPinValidateGateway transactionPinValidateGateway, UpdateTransactionPinUseCase updateTransactionPinUseCase) {
         this.transactionPinValidateGateway = transactionPinValidateGateway;
+        this.updateTransactionPinUseCase = updateTransactionPinUseCase;
     }
 
     @Override

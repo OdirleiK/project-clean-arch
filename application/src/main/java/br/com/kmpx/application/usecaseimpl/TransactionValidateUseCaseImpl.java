@@ -9,6 +9,12 @@ import br.com.kmpx.usecase.TransactionValidateUseCase;
 public class TransactionValidateUseCaseImpl implements TransactionValidateUseCase {
 
     private TransactionValidateGateway transactionValidateGateway;
+
+    public TransactionValidateUseCaseImpl(TransactionValidateGateway transactionValidateGateway) {
+        this.transactionValidateGateway = transactionValidateGateway;
+    }
+
+
     @Override
     public Boolean validate(Transaction transaction) throws TransferException {
         if(!transactionValidateGateway.validate(transaction))
