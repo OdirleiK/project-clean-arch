@@ -25,7 +25,7 @@ public class UserConfig {
         return new EmailAvailableUseCaseImpl(emailAvailableGateway);
     }
     @Bean
-    public CreateUserUseCase createUserUseCase(TaxNumberAvaliableUseCase taxNumberAvaliableUseCase, EmailAvailableUseCase emailAvailableUseCase, CreateUserGateway createUserGateway) {
-        return new CreateUserUseCaseImpl( taxNumberAvaliableUseCase,  emailAvailableUseCase,  createUserGateway);
+    public CreateUserUseCase createUserUseCase(CreateUserGateway createUserGateway) {
+        return new CreateUserUseCaseImpl(createUserGateway);
     }
 }

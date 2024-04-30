@@ -8,7 +8,7 @@ import br.com.kmpx.usecase.TransactionValidateUseCase;
 
 public class TransactionValidateUseCaseImpl implements TransactionValidateUseCase {
 
-    private TransactionValidateGateway transactionValidateGateway;
+    final private TransactionValidateGateway transactionValidateGateway;
 
     public TransactionValidateUseCaseImpl(TransactionValidateGateway transactionValidateGateway) {
         this.transactionValidateGateway = transactionValidateGateway;

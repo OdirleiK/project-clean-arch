@@ -5,7 +5,7 @@ import br.com.kmpx.usecase.EmailAvailableUseCase;
 
 public class EmailAvailableUseCaseImpl implements EmailAvailableUseCase {
 
-    private EmailAvailableGateway emailAvailableGateway;
+    final private EmailAvailableGateway emailAvailableGateway;
 
     public EmailAvailableUseCaseImpl(EmailAvailableGateway emailAvailableGateway) {
         this.emailAvailableGateway = emailAvailableGateway;

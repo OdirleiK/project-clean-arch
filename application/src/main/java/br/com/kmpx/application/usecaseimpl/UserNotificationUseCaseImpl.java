@@ -6,7 +6,7 @@ import br.com.kmpx.usecase.UserNotificationUseCase;
 
 public class UserNotificationUseCaseImpl implements UserNotificationUseCase {
 
-    private UserNotificationGateway userNotificationGateway;
+    final private UserNotificationGateway userNotificationGateway;
 
     public UserNotificationUseCaseImpl(UserNotificationGateway userNotificationGateway) {
         this.userNotificationGateway = userNotificationGateway;

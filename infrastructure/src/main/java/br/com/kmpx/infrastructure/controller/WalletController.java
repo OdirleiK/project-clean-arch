@@ -3,23 +3,35 @@ package br.com.kmpx.infrastructure.controller;
 import br.com.kmpx.infrastructure.dto.request.TransferRequest;
 import br.com.kmpx.infrastructure.dto.response.BaseResponse;
 import br.com.kmpx.infrastructure.dto.response.ConsultBalanceResponse;
-import br.com.kmpx.usecase.ConsultBalanceUseCase;
-import br.com.kmpx.usecase.TransferUseCase;
+import br.com.kmpx.usecase.*;
 import org.springframework.web.bind.annotation.*;
-
-import java.math.BigDecimal;
 
 @RestController
 @RequestMapping("api/v1/wallet")
 public class WalletController {
 
-    private ConsultBalanceUseCase consultBalanceUseCase;
+    final private ConsultBalanceUseCase consultBalanceUseCase;
 
-    private TransferUseCase transferUseCase;
+    final private TransferUseCase transferUseCase;
 
-    public WalletController(ConsultBalanceUseCase consultBalanceUseCase, TransferUseCase transferUseCase) {
+    final private CreateTransactionUseCase createTransactionUseCase;
+
+    final private FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase;
+
+    final private TransactionValidateUseCase transactionValidateUseCase;
+
+    final private TransactionPinValidateUseCase transactionPinValidateUseCase;
+
+    final private UserNotificationUseCase userNotificationUseCase;
+
+    public WalletController(ConsultBalanceUseCase consultBalanceUseCase, TransferUseCase transferUseCase, CreateTransactionUseCase createTransactionUseCase, FindWalletByTaxNumberUseCase findWalletByTaxNumberUseCase, TransactionValidateUseCase transactionValidateUseCase, TransactionPinValidateUseCase transactionPinValidateUseCase, UserNotificationUseCase userNotificationUseCase) {
         this.consultBalanceUseCase = consultBalanceUseCase;
         this.transferUseCase = transferUseCase;
+        this.createTransactionUseCase = createTransactionUseCase;
+        this.findWalletByTaxNumberUseCase = findWalletByTaxNumberUseCase;
+        this.transactionValidateUseCase = transactionValidateUseCase;
+        this.transactionPinValidateUseCase = transactionPinValidateUseCase;
+        this.userNotificationUseCase = userNotificationUseCase;
     }
 
     @GetMapping("/consultBalance/{taxNumber}")
@@ -30,7 +42,16 @@ public class WalletController {
 
     @PostMapping("/transfer")
     public BaseResponse<String> transfer(@RequestBody TransferRequest transferRequest) throws Exception {
-        transferUseCase.transfer(transferRequest.fromTaxNumber(), transferRequest.toTaxNumber(), transferRequest.value(), transferRequest.pin());
+        var from = findWalletByTaxNumberUseCase.findByTaxNumber(transferRequest.fromTaxNumber());
+        transactionPinValidateUseCase.validate(from.getTransactionPin(), transferRequest.pin());
+
+        var to =  findWalletByTaxNumberUseCase.findByTaxNumber(transferRequest.toTaxNumber());
+        var transaction = createTransactionUseCase.create(from, to, transferRequest.value());
+        transactionValidateUseCase.validate(transaction);
+
+        transferUseCase.transfer(transaction);
+        userNotificationUseCase.notificate(transaction, from.getUser().getEmail());
+
         return BaseResponse.<String>builder().success(true).message("Transaction concluded").build();
     }
 }

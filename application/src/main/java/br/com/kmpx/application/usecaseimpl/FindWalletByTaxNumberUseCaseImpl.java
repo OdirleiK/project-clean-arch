@@ -8,7 +8,7 @@ import br.com.kmpx.usecase.FindWalletByTaxNumberUseCase;
 
 public class FindWalletByTaxNumberUseCaseImpl implements FindWalletByTaxNumberUseCase {
 
-    private FindWalletByTaxNumberGateway findWalletByTaxNumberGateway;
+    final private FindWalletByTaxNumberGateway findWalletByTaxNumberGateway;
 
     public FindWalletByTaxNumberUseCaseImpl(FindWalletByTaxNumberGateway findWalletByTaxNumberGateway) {
         this.findWalletByTaxNumberGateway = findWalletByTaxNumberGateway;

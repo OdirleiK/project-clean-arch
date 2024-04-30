@@ -7,7 +7,7 @@ import br.com.kmpx.usecase.UserAuthenticateUseCase;
 
 public class UserAuthenticateUseCaseImpl implements UserAuthenticateUseCase {
 
-    private UserAuthenticateGateway userAuthenticateGateway;
+    final private UserAuthenticateGateway userAuthenticateGateway;
 
     public UserAuthenticateUseCaseImpl(UserAuthenticateGateway userAuthenticateGateway) {
         this.userAuthenticateGateway = userAuthenticateGateway;
